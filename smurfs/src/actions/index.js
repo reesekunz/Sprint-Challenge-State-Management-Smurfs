@@ -38,11 +38,11 @@ dispatch( { type: ADDING_SMURFS_START})
 axios 
     .post("http://localhost:3333/smurfs", values)
     .then(response => {
-    // console.log("success", response.data
+    console.log("success", response.data)
     dispatch({type: ADDING_SMURFS_SUCCESS, payload: response })
     })
     .catch(error => {
-        // console.log("error", error))
+        console.log("error", error)
     dispatch({type: ADDING_SMURFS_FAILURE, payload: error })
     });
     };

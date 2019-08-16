@@ -29,8 +29,8 @@ const GetSmurfs = props => {
 
 const mapStateToProps = state => {
   return {
-    isLoading: state.isLoading,
-    getsmurfsdata: state.getsmurfsdata 
+    isLoading: state.SmurfReducer.isLoading,
+    getsmurfsdata: state.SmurfReducer.getsmurfsdata 
   };
 };
 

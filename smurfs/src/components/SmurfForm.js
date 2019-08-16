@@ -1,88 +1,85 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Form, Field, withFormik } from "formik";
+import React from "react";
+import { connect } from 'react-redux';
+import { withFormik } from "formik";
 import * as Yup from "yup";
+import { postData } from '../actions';
 
-const SmurfForm = props => {
-
-  const [smurfs, setSmurfs] = useState([]);
-
-  useEffect(() => {
-    if (props.status) {
-      setSmurfs([...smurfs, props.status]);
-    }
-  }, [props.status]);
-  //inputs needed to add smurfs: name, age, height 
+ const SmurfForm = (props) => {
+const {
+  values, touched, errors, isSubmitting, handleChange, handleSubmit, handleReset
+} = props
   return (
     <div className="smurf-form">
-      <h1>Add Smurf</h1>
-      <Form>
-        {/* // Name Input  */}
-        <div className="input">
-        <Field type="text" name="name" placeholder="Name" />*
-        {props.touched.name && props.errors.name && <p>{props.errors.name}</p>}
-        </div>
-        {/* // Age Input  */}
-        <div className="input">
-        <Field type="text" name="age" placeholder="Age" />*
-        {props.touched.age && props.errors.age && (
-          <p>{props.errors.age}</p>
-        )}
-        </div>
-          {/* // Height Input  */}
-          <div className="input">
-        <Field type="text" name="height" placeholder="Height" />*
-        {props.touched.height && props.errors.height && (
-          <p>{props.errors.height}</p>
-        )}
-        </div>
-       
-        {/* // Submit Button  */}
-        <button className="button" type="submit"> Submit!</button>
-      </Form>
+    <h1>Add Smurf to Village</h1>
+    <form onSubmit={handleSubmit}>
+       {/* // Name Input  */}
+    <label htmlFor="name">Smurf Name</label>
+    <input
+        id="name"
+        placeholder="name"
+        type="text"
+        value={values.name}
+        onChange={handleChange}
+       />
+  {/* // Age Input  */}
+  <label htmlFor="name">Age</label>
+    <input
+        id="age"
+        placeholder="age"
+        type="text"
+        value={values.age}
+        onChange={handleChange}
+       />
+         {/* // Weight Input  */}
+  <label htmlFor="name">Weight</label>
+    <input
+        id="weight"
+        placeholder="weight"
+        type="text"
+        value={values.weight}
+        onChange={handleChange}
+       />
 
-      {/* Mapping each smurf and displaying their submitted info  */}
-      {smurfs.map(smurf => (
-        <div className="display-smurf" key={smurf.id}>
-          <div className="info"> Smurf: {smurf.name} </div>
-          <div className="info">Age: {smurf.age}</div>
-          <div className="info">Height {smurf.height}</div>
-        </div>
-      ))}
-    </div>
-  );
-};
-// HOC returning copy of SmurForm with extended Formik logic 
+        {/* // Reset Button  */}
+        <button onClick={handleReset} className="button" type="submit"> Reset</button>
+        <button type="submit" onClick={handleSubmit} >
+        Submit
+      </button>
+      </form>
+   </div>
+  )
+  }
 const FormikSmurfForm = withFormik({
   mapPropsToValues(values) {
-    return {
-      name: values.name || "",
-      age: values.age|| "",
-      height: values.height|| "",
-    };
-  },
+        return {
+          name: values.name || "",
+          age: values.age|| "",
+          height: values.height|| "",
+        };
+      },
 
-  // Yup form validation 
-  validationSchema: Yup.object().shape({
-    // take every value you want to validate, and give each value rules
+   validationSchema: Yup.object().shape({
     name: Yup.string().required(),
     age: Yup.string().required(),
     height: Yup.string().required(),
-    // these give you the error props you need to apply under the each <Field> component in userForm to render
   }),
 
-  // get setStatus
-  handleSubmit(values, { setStatus, resetForm }) {
-    axios
-      .post("http://localhost:3333/smurfs", values)
-      .then(response => {
-        console.log(response);
-        // call setStatus and pass in object you want to add to state
-        setStatus(response.data);
-      })
-      .catch(error => console.log(error.response));
-      resetForm();
-  }
-})(SmurfForm); // currying functions in Javascript
+  handleSubmit(values, { props, setSubmitting }) {
+    props.dispatch(postData(values));
+    setSubmitting(false);
+  },
 
-export default FormikSmurfForm;
+
+})(SmurfForm);
+
+const mapStateToProps = state => {
+  return {
+    isSubmitting: state.SmurfFormReducer.isSubmitting,
+    smurfVillage: state.SmurfFormReducer.smurfVillage
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { postData }
+)(FormikSmurfForm);

@@ -9,7 +9,7 @@ const initialState = {
     error: ""
   };
 
-  export const reducer = (state = initialState, action) => {
+  export const SmurfReducer = (state = initialState, action) => {
     switch (action.type) {
       case FETCHING_SMURFS_START:
         return {
@@ -28,7 +28,7 @@ const initialState = {
         return {
           ...state,
           isLoading: false,
-          error: ""
+          error: action.payload
         };
   
       default:

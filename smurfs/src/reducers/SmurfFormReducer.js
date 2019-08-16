@@ -1,35 +1,37 @@
 import {
     ADDING_SMURFS_START,
     ADDING_SMURFS_SUCCESS,
-    ADDING_SMURFS_FALIURE,
+    ADDING_SMURFS_FAILURE,
   } from "../actions";
 
   const initialState = {
     smurfVillage: [],
+    isSubmitting: false,
     error: ""
   };
 
 
 export const SmurfFormReducer = (state = initialState, action) => {
     switch (action.type) {
-      case FETCHING_SMURFS_START:
+      case ADDING_SMURFS_START:
+          console.log(action)
         return {
           ...state,
-          isLoading: true,
+          isSubmitting: true,
           error: ""
         };
-      case FETCHING_SMURFS_SUCCESS:
+      case ADDING_SMURFS_SUCCESS:
         return {
           ...state,
-          isLoading: false,
+          isSubmitting: false,
           error: "",
-          getsmurfsdata: action.payload
+          smurfVillage: action.payload
         };
-      case FETCHING_SMURFS_FAILURE:
+      case ADDING_SMURFS_FAILURE:
         return {
           ...state,
-          isLoading: false,
-          error: ""
+          isSubmitting: false,
+          error: action.payload 
         };
   
       default:
