@@ -3,11 +3,15 @@ import { connect } from "react-redux";
 import Loader from 'react-loader-spinner'
 import Smurf from "./Smurf";
 
+import { getData } from "../actions";
+
+
 const GetSmurfs = props => {
   return (
     <div>
       <h1>Welcome to our Smurf Village!</h1>
-      <button> {props.isLoading ?  <Loader
+      <button onClick={props.getData}> 
+      {props.isLoading ?  <Loader
          type="Puff"
          color="#00BFFF"
          height="100"
@@ -32,5 +36,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  {}
+  { getData }
 )(GetSmurfs);
