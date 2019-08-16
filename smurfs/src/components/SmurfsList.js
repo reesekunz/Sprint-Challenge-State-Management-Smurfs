@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Loader from 'react-loader-spinner'
+import Smurf from "./Smurf";
 
 const GetSmurfs = props => {
   return (
@@ -12,13 +13,20 @@ const GetSmurfs = props => {
          height="100"
          width="100"
       /> : "Get Smurfs"}</button>
+
+    {props.getsmurfsdata &&
+        props.getsmurfsdata.map(smurf => (
+          <Smurf key={smurf.name} smurf={smurf} />
+        ))}
     </div>
   );
 };
 
+
 const mapStateToProps = state => {
   return {
-    isLoading: state.isLoading
+    isLoading: state.isLoading,
+    getsmurfsdata: state.getsmurfsdata 
   };
 };
 
