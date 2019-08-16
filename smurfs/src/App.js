@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import GetSmurfs from "./components/GetSmurfs";
-
+import FormikSmurfForm from "./components/SmurfForm";
 
 
 class App extends Component {
@@ -11,6 +11,8 @@ class App extends Component {
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div>Welcome to your state management version of Smurfs!</div>
         <GetSmurfs />
+        <FormikSmurfForm /> 
+
       </div>
     );
   }
