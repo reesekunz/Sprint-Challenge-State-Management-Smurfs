@@ -1,6 +1,6 @@
 const initialState = {
   getsmurfsdata: [],
-  test: "Testing to see if connected!"
+  isLoading: false,
 
 };
 

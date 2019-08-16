@@ -15,7 +15,7 @@ const SmurfForm = props => {
   //inputs needed to add smurfs: name, age, height 
   return (
     <div className="smurf-form">
-      <h1>Add Smurf to Village</h1>
+      <h1>Add Smurf</h1>
       <Form>
         {/* // Name Input  */}
         <div className="input">
