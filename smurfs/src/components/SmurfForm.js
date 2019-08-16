@@ -74,7 +74,7 @@ const FormikSmurfForm = withFormik({
   // get setStatus
   handleSubmit(values, { setStatus, resetForm }) {
     axios
-      .post("https://reqres.in/api/users/", values)
+      .post("http://localhost:3333/smurfs", values)
       .then(response => {
         console.log(response);
         // call setStatus and pass in object you want to add to state
