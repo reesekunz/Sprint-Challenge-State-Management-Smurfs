@@ -4,7 +4,13 @@ import { connect } from "react-redux";
 
 const GetSmurfs = props => {
 return (
-    <h1>{props.test}</h1>
+    <div>
+<h1>Welcome, check out our smurfs, yo</h1>
+<button>Get Smurfs</button>
+
+
+
+    </div>
     )
 }
 
