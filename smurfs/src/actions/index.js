@@ -17,11 +17,11 @@ dispatch( { type: FETCHING_SMURFS_START})
 axios 
     .get("http://localhost:3333/smurfs")
     .then(response => {
-    // console.log("success", response.data
+    //console.log("success", response.data
     dispatch({type: FETCHING_SMURFS_SUCCESS, payload: response.data })
     })
     .catch(error => {
-        // console.log("error", error))
+    //console.log("error", error))
     dispatch({type: FETCHING_SMURFS_FAILURE, payload: error.response })
     });
     };
@@ -33,13 +33,14 @@ axios
 
 // ADDING SMURFS 
 export const postData = values => {
+    console.log('smurf', values)
     return(dispatch) => {
 dispatch( { type: ADDING_SMURFS_START})
 axios 
     .post("http://localhost:3333/smurfs", values)
     .then(response => {
-    console.log("success", response.data)
-    dispatch({type: ADDING_SMURFS_SUCCESS, payload: response })
+    console.log("response =", response.data)
+    dispatch({type: ADDING_SMURFS_SUCCESS, payload: response.data })
     })
     .catch(error => {
         console.log("error", error)

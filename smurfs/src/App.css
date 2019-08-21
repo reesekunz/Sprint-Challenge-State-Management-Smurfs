@@ -2,27 +2,56 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.card .flex {
+  display: flex;
+  justify-content: center;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.card {
+width: 50%;
+margin-left: 25%;
+margin-top: 2.5%;
+margin-bottom: 2.5%;
+padding-top: 1%;
+padding-bottom: 2.5%;
+box-shadow: 3px 3px 6px rgba(0,0,0,0.03);
+border-radius: 4px;
+color: #84613D;
+font-family: "Lucida Console", Monaco, monospace;
+background: #FDF9EA;
+border-bottom: 1px solid #F9F2D6;
+border-right: 1px solid #F9F2D6;
+transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+
 }
 
-.App-title {
-  font-size: 1.5em;
+.card:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
-.App-intro {
-  font-size: large;
+.smurf-form {
+margin-top: 4%;
+margin-bottom: 4%;
+border-top: 3px solid black;
+border-bottom: 3px solid black;
+padding-bottom: 3%;
+padding-top: 1%;
+background-color: lightblue;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.input {
+padding-top: 1.5%;
+padding-bottom: 1.5%;
+
 }
+
+.form-button {
+margin-top: 1.5%;
+
+}
+
+
+
+
+

@@ -1,7 +1,11 @@
 import {
     FETCHING_SMURFS_START,
     FETCHING_SMURFS_SUCCESS,
-    FETCHING_SMURFS_FAILURE } from "../actions";
+    FETCHING_SMURFS_FAILURE,
+    ADDING_SMURFS_START,
+    ADDING_SMURFS_SUCCESS,
+    ADDING_SMURFS_FAILURE,
+  } from "../actions";
 
 const initialState = {
     getsmurfsdata: [],
@@ -29,6 +33,27 @@ const initialState = {
           ...state,
           isLoading: false,
           error: action.payload
+        };
+        case ADDING_SMURFS_START:
+          console.log(action)
+        return {
+          ...state,
+          isSubmitting: true,
+          error: ""
+        };
+      case ADDING_SMURFS_SUCCESS:
+          console.log('payload', action.payload);
+        return {
+          ...state,
+          isSubmitting: false,
+          error: "",
+          getsmurfsdata: action.payload
+        };
+      case ADDING_SMURFS_FAILURE:
+        return {
+          ...state,
+          isSubmitting: false,
+          error: action.payload 
         };
   
       default:

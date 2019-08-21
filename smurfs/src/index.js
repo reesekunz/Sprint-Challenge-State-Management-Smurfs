@@ -7,9 +7,9 @@ import { createStore, applyMiddleware } from "redux";
 import thunk from 'redux-thunk';
 import { Provider } from  "react-redux";
 
-import rootReducer from "./reducers";
+import {SmurfReducer} from "./reducers/SmurfReducer";
 
-export const store = createStore(rootReducer, applyMiddleware(thunk));
+export const store = createStore(SmurfReducer, applyMiddleware(thunk));
 
 // export const store = createStore(reducer, applyMiddleware(thunk));
 

@@ -5,11 +5,9 @@ import Smurf from "./Smurf";
 
 import { getData } from "../actions";
 
-
 const GetSmurfs = props => {
   return (
     <div>
-      <h1>Welcome to our Smurf Village!</h1>
       <button onClick={props.getData}> 
       {props.isLoading ?  <Loader
          type="Puff"
@@ -29,8 +27,8 @@ const GetSmurfs = props => {
 
 const mapStateToProps = state => {
   return {
-    isLoading: state.SmurfReducer.isLoading,
-    getsmurfsdata: state.SmurfReducer.getsmurfsdata 
+    isLoading: state.isLoading,
+    getsmurfsdata: state.getsmurfsdata 
   };
 };
 
