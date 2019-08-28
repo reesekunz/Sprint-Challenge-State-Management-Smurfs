@@ -1,0 +1,57 @@
+.App {
+  text-align: center;
+}
+
+.card .flex {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+width: 50%;
+margin-left: 25%;
+margin-top: 2.5%;
+margin-bottom: 2.5%;
+padding-top: 1%;
+padding-bottom: 2.5%;
+box-shadow: 3px 3px 6px rgba(0,0,0,0.03);
+border-radius: 4px;
+color: #84613D;
+font-family: "Lucida Console", Monaco, monospace;
+background: #FDF9EA;
+border-bottom: 1px solid #F9F2D6;
+border-right: 1px solid #F9F2D6;
+transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+
+}
+
+.card:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.smurf-form {
+margin-top: 4%;
+margin-bottom: 4%;
+border-top: 3px solid black;
+border-bottom: 3px solid black;
+padding-bottom: 3%;
+padding-top: 1%;
+background-color: lightblue;
+}
+
+.input {
+padding-top: 1.5%;
+padding-bottom: 1.5%;
+
+}
+
+.form-button {
+margin-top: 1.5%;
+
+}
+
+
+
+
+
